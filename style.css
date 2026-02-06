@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #dfe9f3, #ffffff);
+  text-align: center;
+  padding: 20px;
+}
+
+h1 { color: #2c3e50; }
+
+.scoreboard {
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 320px;
+  margin: 0 auto 20px auto;
+}
+
+.section {
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  width: 95%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+input, select, button {
+  padding: 8px;
+  margin: 5px;
+}

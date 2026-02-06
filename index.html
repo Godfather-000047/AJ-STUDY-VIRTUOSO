@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 12 Practice Simulator</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2c3e50" />
+</head>
+<body>
+
+  <h1>🎓AJ STUDY VIRTUOSO </h1>
+  <p>Practice Maths and Physical Sciences questions</p>
+
+  <div class="scoreboard">
+    <p>📐 Maths Score: <span id="mathScore">0</span></p>
+    <p>⚗️ Science Score: <span id="scienceScore">0</span></p>
+    <p>🏆 Total Score: <span id="totalScore">0</span></p>
+  </div>
+
+  <!-- MATH SECTION -->
+  <div class="section">
+    <h2>📐 Mathematics</h2>
+    <label>Topic:</label>
+    <select id="mathTopic">
+      <option value="linear">Linear Equations</option>
+      <option value="quadratic">Quadratic Equations</option>
+      <option value="functions">Functions</option>
+      <option value="simultaneous">Simultaneous Equations</option>
+      <option value="polynomials">Polynomials</option>
+      <option value="trigonometry">Trigonometry</option>
+    </select>
+    <br><br>
+
+    <label>Difficulty:</label>
+    <select id="mathLevel">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <p id="mathQuestion">Click "New Question"</p>
+    <input type="number" id="mathAnswer" placeholder="Enter value">
+    <br>
+    <button onclick="checkMath()">Check Answer</button>
+    <button onclick="generateMath()">New Question</button>
+    <button onclick="resetProgress()">Reset All</button>
+    <p id="mathFeedback"></p>
+  </div>
+
+  <!-- SCIENCE SECTION -->
+  <div class="section">
+    <h2>⚗️ Physical Sciences</h2>
+
+    <label>Topic:</label>
+    <select id="scienceTopic">
+      <option value="speed">Speed / Motion</option>
+      <option value="newton">Newton's Laws</option>
+      <option value="ohm">Ohm's Law</option>
+      <option value="workpower">Work / Energy</option>
+      <option value="pressure">Pressure</option>
+      <option value="kinematics">Kinematics</option>
+    </select>
+    <br><br>
+
+    <label>Difficulty:</label>
+    <select id="scienceLevel">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <p id="scienceQuestion">Click "New Question"</p>
+    <input type="number" id="scienceAnswer" placeholder="Enter value">
+    <br>
+    <button onclick="checkScience()">Check Answer</button>
+    <button onclick="generateScience()">New Question</button>
+    <p id="scienceFeedback"></p>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+
+</body>
+</html>
