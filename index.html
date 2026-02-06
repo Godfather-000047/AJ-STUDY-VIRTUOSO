@@ -1,92 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grade 12 Practice Simulator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 12 Exam Simulator</title>
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#2c3e50" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1e3a8a">
 </head>
 <body>
 
-  <h1>🎓AJ STUDY VIRTUOSO </h1>
-  <p>Practice Maths and Physical Sciences questions</p>
+  <!-- HEADER -->
+  <header>
+    <h1>🎓AJ STUDY VIRTUOSO</h1>
+    <p>Learn. Practice. Improve.</p>
+  </header>
 
-  <div class="scoreboard">
-    <p>📐 Maths Score: <span id="mathScore">0</span></p>
-    <p>⚗️ Science Score: <span id="scienceScore">0</span></p>
-    <p>🏆 Total Score: <span id="totalScore">0</span></p>
-  </div>
+  <!-- SUBJECT SELECTION -->
+  <section class="subjects">
+    <div class="card maths" onclick="selectSubject('math')">
+      <h2>📐 Mathematics</h2>
+      <p>Algebra • Trigonometry • Calculus • Statistics</p>
+      <button>Start Practice</button>
+    </div>
 
-  <!-- MATH SECTION -->
-  <div class="section">
-    <h2>📐 Mathematics</h2>
-    <label>Topic:</label>
-    <select id="mathTopic">
-      <option value="linear">Linear Equations</option>
-      <option value="quadratic">Quadratic Equations</option>
-      <option value="functions">Functions</option>
-      <option value="simultaneous">Simultaneous Equations</option>
-      <option value="polynomials">Polynomials</option>
-      <option value="trigonometry">Trigonometry</option>
+    <div class="card science" onclick="selectSubject('science')">
+      <h2>⚗️ Physical Sciences</h2>
+      <p>Physics • Chemistry</p>
+      <button>Start Practice</button>
+    </div>
+  </section>
+
+  <!-- TOPIC SELECTION -->
+  <section id="topicSelection" class="topic-section" style="display:none;">
+    <label for="topicDropdown">Select Topic:</label>
+    <select id="topicDropdown" onchange="generateQuestion()">
     </select>
-    <br><br>
+  </section>
 
-    <label>Difficulty:</label>
-    <select id="mathLevel">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
+  <!-- QUESTION PANEL -->
+  <section class="question-panel">
+    <h3 id="topicTitle">Choose a subject and topic to begin</h3>
 
-    <p id="mathQuestion">Click "New Question"</p>
-    <input type="number" id="mathAnswer" placeholder="Enter value">
-    <br>
-    <button onclick="checkMath()">Check Answer</button>
-    <button onclick="generateMath()">New Question</button>
-    <button onclick="resetProgress()">Reset All</button>
-    <p id="mathFeedback"></p>
-  </div>
+    <div id="questionBox">
+      <p id="questionText">Your question will appear here.</p>
+    </div>
 
-  <!-- SCIENCE SECTION -->
-  <div class="section">
-    <h2>⚗️ Physical Sciences</h2>
+    <input type="number" id="answerInput" placeholder="Enter your answer">
 
-    <label>Topic:</label>
-    <select id="scienceTopic">
-      <option value="speed">Speed / Motion</option>
-      <option value="newton">Newton's Laws</option>
-      <option value="ohm">Ohm's Law</option>
-      <option value="workpower">Work / Energy</option>
-      <option value="pressure">Pressure</option>
-      <option value="kinematics">Kinematics</option>
-    </select>
-    <br><br>
+    <div class="buttons">
+      <button onclick="submitAnswer()">Submit Answer</button>
+      <button onclick="generateQuestion()">New Question</button>
+    </div>
 
-    <label>Difficulty:</label>
-    <select id="scienceLevel">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
+    <p id="feedback"></p>
+  </section>
 
-    <p id="scienceQuestion">Click "New Question"</p>
-    <input type="number" id="scienceAnswer" placeholder="Enter value">
-    <br>
-    <button onclick="checkScience()">Check Answer</button>
-    <button onclick="generateScience()">New Question</button>
-    <p id="scienceFeedback"></p>
-  </div>
+  <!-- PROGRESS -->
+  <section class="progress-section">
+    <label>Session Progress</label>
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
+    <p id="progressText">0 questions answered</p>
+  </section>
+
+  <!-- RESET -->
+  <section class="reset-section">
+    <button onclick="resetPractice()">🔄 Reset Practice</button>
+  </section>
 
   <script src="script.js"></script>
-
   <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("service-worker.js");
     }
   </script>
-
 </body>
 </html>
